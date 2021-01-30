@@ -1,12 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { context } from '../Context';
+import { context } from '../Contexts/ModalContext';
 
-const Form = () => {
+export function Form() {
 
     const [coordinates, setCoordinates] = useState({
         x: 800,
         y: 400
     })
+
+    const handelSubmit = (event) => {
+        event.preventDefault()
+        console.log(coordinates)
+    }
 
     const handleChanges = (event) => {
         const newCoord = event.target.name;
@@ -18,24 +23,23 @@ const Form = () => {
 
     return (
         <div className="Form">
-            <form>My Coordinates
-      <label>X</label>
+            <form onSubmit={handelSubmit}>My Coordinates
+                <label >X</label>
                 <input
                     name="x"
                     type="number"
                     defaultValue={coordinates.x}
                     onChange={handleChanges}>
                 </input>
-                <label>Y</label>
+                <label >Y</label>
                 <input
                     name="y"
                     type="number"
                     defaultValue={coordinates.y}
                     onChange={handleChanges}
                 ></input>
+                <button type="submit" >Travel</button>
             </form>
         </div>
     );
 }
-
-export default Form;

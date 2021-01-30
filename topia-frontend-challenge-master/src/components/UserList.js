@@ -10,9 +10,8 @@ export const UserList = (props) => {
   // TODO: Create a Modal component with inputs for position and screen size (screen size should default to actual window width and height but be editable).
   // CTA in Modal should close modal, call listUsersInView with updated values, and update usersInView
   // Add a list of the users in view in the render statement below
-  console.log(props)
-  if (!props.show) { return (null) }
-  else {
+  // console.log(props)
+ 
     return (
       <Container maxWidth="md">
         <Box my={4}>
@@ -29,6 +28,6 @@ export const UserList = (props) => {
         )}
       </Container>
     );
-  }
+  
 };
 

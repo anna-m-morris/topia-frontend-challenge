@@ -1,20 +1,18 @@
 import "./App.css";
 import React, { useContext, useState } from 'react';
-import { UserList } from "./components/UserList";
-import {Modal} from "./components/Modal"
+import { Modal } from "./components/Modal"
 
 function App() {
-  const [modal, setModal] = useState(false)
+  const [active, setActive] = useState(false)
 
   const launchModal = (event) => {
-    setModal(true)
+    setActive(true)
   };
 
   return (
     <div className="App">
-      <button onClick={launchModal}>User List</button>
-      <Modal show={modal}></Modal>
-      <UserList show={modal} />
+      <button onClick={launchModal}>Launch Topia Challenge</button>
+      <Modal active={active} setActive={setActive}/>
     </div>
   );
 }
