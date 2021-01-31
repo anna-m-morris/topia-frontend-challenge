@@ -1,25 +1,30 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { UserList } from "./UserList"
 import { Form } from "./Form"
 import { ModalContext } from "../Contexts/ModalContext"
 
 export function Modal(props) {
-    const [size, setSize] = useState({ hight: window.screen.height, width: window.screen.width })
+    const {size} = useContext(ModalContext)
 
     const handleEscape = (event) => {
         props.setActive(false)
     }
 
+    const modalStyle={
+        height:JSON.stringify(size.height),
+        width:JSON.stringify(size.width)
+    }
+
+    console.log(size)
+
     if (!props.active) { return (null) }
     else {
         return (
-            <ModalContext.Provider value={{ size, setSize }}>
-                <div>
-                    <button className="esc" onClick={handleEscape}>Esc</button>
-                    <UserList></UserList>
-                    <Form></Form>
+                <div className="modal" style={{height:`${size.height}`}}>
+                    <button onClick={handleEscape}>Esc</button>
+                    <UserList/>
+                    <Form/>
                 </div>
-            </ModalContext.Provider>
         )
     }
 }

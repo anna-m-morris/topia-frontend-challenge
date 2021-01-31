@@ -1,19 +1,30 @@
 import React, { useContext, useState } from 'react';
-import { context } from '../Contexts/ModalContext';
+import { ModalContext } from '../Contexts/ModalContext';
 
 export function Form() {
+
+    const { size, setSize } = useContext(ModalContext)
+
+    const handelScreenResize = (event) => {
+        const newSize = event.target.name
+        setSize({
+            ...size,
+            [newSize]: event.target.value
+        })
+    }
 
     const [coordinates, setCoordinates] = useState({
         x: 800,
         y: 400
     })
 
-    const handelSubmit = (event) => {
+    const handelCoordSubmit = (event) => {
         event.preventDefault()
         console.log(coordinates)
+        //run algo
     }
 
-    const handleChanges = (event) => {
+    const handleCoordChanges = (event) => {
         const newCoord = event.target.name;
         setCoordinates({
             ...coordinates,
@@ -23,20 +34,20 @@ export function Form() {
 
     return (
         <div className="Form">
-            <form onSubmit={handelSubmit}>My Coordinates
+            <form onSubmit={handelCoordSubmit}>My Coordinates
                 <label >X</label>
                 <input
                     name="x"
                     type="number"
                     defaultValue={coordinates.x}
-                    onChange={handleChanges}>
+                    onChange={handleCoordChanges}>
                 </input>
                 <label >Y</label>
                 <input
                     name="y"
                     type="number"
                     defaultValue={coordinates.y}
-                    onChange={handleChanges}
+                    onChange={handleCoordChanges}
                 ></input>
                 <button type="submit" >Travel</button>
             </form>
