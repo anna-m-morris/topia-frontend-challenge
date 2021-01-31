@@ -1,0 +1,15 @@
+.list{
+    max-width: 100%;
+    display: flex;
+    flex-flow:wrap;
+
+}
+
+.card{
+    background:white;
+    color:black;
+    min-width: 175px;
+    padding:15px;
+
+    margin:25px;
+}
