@@ -11,23 +11,37 @@ export const UserList = (props) => {
   // CTA in Modal should close modal, call listUsersInView with updated values, and update usersInView
   // Add a list of the users in view in the render statement below
   // console.log(props)
- 
-    return (
-      <Container maxWidth="md">
-        <Box my={4}>
-          <Typography variant="h5" component="h1" gutterBottom>
-            The following Users are currently visible based on position and screen size.
+
+  return (
+    <Container maxWidth="md">
+      <Box my={4}>
+        <Typography variant="h5" component="h1" gutterBottom>
+          The following Users are currently visible based on position and screen size.
         </Typography>
-        </Box>
-        {usersInView.length === 0 && (
-          <Box my={4}>
-            <Typography component="p" gutterBottom>
-              There are currently no users within view.
+      </Box>
+      <div>{usersInView.forEach(topi => {
+        <UserCard id={topi.id} broadcaster={topi.is_broadcaster} name={topi.username} />
+      })}</div>
+      {usersInView.length === 0 && (
+        <Box my={4}>
+          <Typography component="p" gutterBottom>
+            There are currently no users within view.
           </Typography>
-          </Box>
-        )}
-      </Container>
-    );
-  
+        </Box>
+      )}
+    </Container>
+  );
+
 };
+
+const UserCard = (props) => {
+  return (
+    <div>
+      <h5>{props.name}</h5>
+      {props.broadcaster === true && (
+        <p>broadcaster</p>
+      )}
+    </div>
+  )
+}
 

@@ -4,6 +4,7 @@ import { Form } from "./Form"
 import { ModalContext } from "../Contexts/ModalContext"
 import "./modal.css"
 
+
 export function Modal(props) {
     const { size } = useContext(ModalContext)
 

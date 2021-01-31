@@ -1,5 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { ModalContext } from '../Contexts/ModalContext';
+import {PositionContext} from "../Contexts/PositionContext"
+import listUsersInView from "../utils/listUsersInView"
+import { USER_LIST } from "../utils/constants"
 
 export function Form() {
 
@@ -9,33 +12,28 @@ export function Form() {
         const newSize = event.target.name
         setSize({
             ...size,
-            [newSize]: event.target.value
+            [newSize]: Number(event.target.value)
         })
     }
 
     const handelScreenSubmit = (event) => {
         event.preventDefault()
-        console.log(size)
-        //run algo
+        listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width)
     }
 
-    const [coordinates, setCoordinates] = useState({
-        x: 800,
-        y: 400
-    })
+    const {coordinates, setCoordinates} = useContext(PositionContext)
 
     const handleCoordChanges = (event) => {
         const newCoord = event.target.name;
         setCoordinates({
             ...coordinates,
-            [newCoord]: event.target.value
+            [newCoord]: Number(event.target.value)
         })
     };
 
     const handelCoordSubmit = (event) => {
         event.preventDefault()
-        console.log(coordinates)
-        //run algo
+        listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width)
     }
 
     return (
@@ -70,7 +68,7 @@ export function Form() {
                     type="number"
                     defaultValue={size.width}
                     onChange={handelScreenInput} />
-                    <button type="submit">Resize</button>
+                <button type="submit">Resize</button>
             </form>
         </div>
     );
