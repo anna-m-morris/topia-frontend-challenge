@@ -10,27 +10,38 @@ export default function listUsersInView(users, positionX, positionY, screenWidth
   //Virtual graph centered on user
   const yAxis = screenWidth / 2;
   const xAxis = screenHeight / 2;
-
   const screen = {
     top: (xAxis + positionY),
+    right: (positionX + yAxis),
     bottom: (positionY - xAxis),
     left: (positionX - yAxis),
-    right: (positionX + yAxis),
-  }
-
-  console.log(screen)
-
-  const inRange = (num, min, max) => {
-    return num >= min && num <= max
   }
 
   //In veiw logic
+  const inRange = (num, min, max) => {
+    return num >= min && num <= max
+  }
   Object.values(users).forEach(topi => {
     if (inRange(topi.y, screen.bottom, screen.top) && inRange(topi.x, screen.left, screen.right)) {
       usersInView.push(topi)
     }
   })
+
+  //Sort visable users by distance
+  const distance = (topi, positionX, positionY) => {
+    return (Math.abs(topi.x - positionX) + Math.abs(topi.y - positionY))
+  }
+  const sortdistance = (a, b) => {
+    return (a[0] - b[0])
+  }
+  const sorted = usersInView.map((topi) => {
+    return ([distance(topi, positionX, positionY), topi])
+  })
+  const result = sorted.sort(sortdistance).map((topi) => {
+    return (topi[1])
+  })
+
   // END SOLUTION SECTION
 
-  return usersInView;
+  return result;
 }

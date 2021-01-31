@@ -9,6 +9,7 @@ export function Form() {
 
     const { size, setSize } = useContext(ModalContext)
     const {setUsers} = useContext(UsersContext)
+    const {coordinates, setCoordinates} = useContext(PositionContext)
 
     const handelScreenInput = (event) => {
         const newSize = event.target.name
@@ -22,8 +23,6 @@ export function Form() {
         event.preventDefault()
         setUsers(listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width))
     }
-
-    const {coordinates, setCoordinates} = useContext(PositionContext)
 
     const handleCoordChanges = (event) => {
         const newCoord = event.target.name;
