@@ -5,7 +5,7 @@ export function Form() {
 
     const { size, setSize } = useContext(ModalContext)
 
-    const handelScreenResize = (event) => {
+    const handelScreenInput = (event) => {
         const newSize = event.target.name
         setSize({
             ...size,
@@ -13,16 +13,16 @@ export function Form() {
         })
     }
 
+    const handelScreenSubmit = (event) => {
+        event.preventDefault()
+        console.log(size)
+        //run algo
+    }
+
     const [coordinates, setCoordinates] = useState({
         x: 800,
         y: 400
     })
-
-    const handelCoordSubmit = (event) => {
-        event.preventDefault()
-        console.log(coordinates)
-        //run algo
-    }
 
     const handleCoordChanges = (event) => {
         const newCoord = event.target.name;
@@ -31,6 +31,12 @@ export function Form() {
             [newCoord]: event.target.value
         })
     };
+
+    const handelCoordSubmit = (event) => {
+        event.preventDefault()
+        console.log(coordinates)
+        //run algo
+    }
 
     return (
         <div className="Form">
@@ -50,6 +56,21 @@ export function Form() {
                     onChange={handleCoordChanges}
                 ></input>
                 <button type="submit" >Travel</button>
+            </form>
+            <form onSubmit={handelScreenSubmit}>Screen Size
+                <label>Height</label>
+                <input
+                    name="height"
+                    type="number"
+                    defaultValue={size.height}
+                    onChange={handelScreenInput} />
+                <label>Width</label>
+                <input
+                    name="width"
+                    type="number"
+                    defaultValue={size.width}
+                    onChange={handelScreenInput} />
+                    <button type="submit">Resize</button>
             </form>
         </div>
     );

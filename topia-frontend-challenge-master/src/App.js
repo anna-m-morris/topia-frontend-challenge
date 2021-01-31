@@ -17,7 +17,7 @@ function App() {
     <ModalContext.Provider value={{ size, setSize }}>
       <div className="App">
         <button className={JSON.stringify(active)} onClick={launchModal}>Launch Topia Challenge</button>
-        <Modal active={active} setActive={setActive} />
+        <Modal className={JSON.stringify(active)} active={active} setActive={setActive}/>
       </div>
     </ModalContext.Provider>
   );
