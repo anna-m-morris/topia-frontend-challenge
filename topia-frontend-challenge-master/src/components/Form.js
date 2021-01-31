@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ModalContext } from '../Contexts/ModalContext';
 import {PositionContext} from "../Contexts/PositionContext"
+import {UsersContext} from "../Contexts/UsersContext"
 import listUsersInView from "../utils/listUsersInView"
 import { USER_LIST } from "../utils/constants"
 
 export function Form() {
 
     const { size, setSize } = useContext(ModalContext)
+    const {setUsers} = useContext(UsersContext)
 
     const handelScreenInput = (event) => {
         const newSize = event.target.name
@@ -18,7 +20,7 @@ export function Form() {
 
     const handelScreenSubmit = (event) => {
         event.preventDefault()
-        listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width)
+        setUsers(listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width))
     }
 
     const {coordinates, setCoordinates} = useContext(PositionContext)
@@ -33,7 +35,7 @@ export function Form() {
 
     const handelCoordSubmit = (event) => {
         event.preventDefault()
-        listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width)
+        setUsers(listUsersInView(USER_LIST, coordinates.x, coordinates.y, size.height, size.width))
     }
 
     return (
