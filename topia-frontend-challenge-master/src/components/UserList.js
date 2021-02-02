@@ -12,7 +12,7 @@ export const UserList = (props) => {
   // CTA in Modal should close modal, call listUsersInView with updated values, and update usersInView
   // Add a list of the users in view in the render statement below
   // console.log(props)
-
+console.log("users", users)
   return (
     <Container maxWidth="md">
       <Box my={4}>
@@ -25,9 +25,10 @@ export const UserList = (props) => {
         {users.map((topi) => {
           return (
             <UserCard
-              key={topi.id}
-              broadcaster={topi.is_broadcaster}
-              name={topi.username}
+              key={topi[1].id}
+              distance={topi[0]}
+              broadcaster={topi[1].is_broadcaster}
+              name={topi[1].username}
             />
           );
         })}
@@ -47,6 +48,7 @@ const UserCard = (props) => {
   return (
     <div className="card">
       <h5>{props.name}</h5>
+      <p>{`${props.distance} topi feet away`}</p>
       {props.broadcaster === true && <p>broadcaster</p>}
     </div>
   );
