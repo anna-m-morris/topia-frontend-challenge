@@ -9,12 +9,12 @@ export default function listUsersInView(
 
   // WRITE SOLUTION BELOW. ADD USERNAME AND IS_BROADCASTER TO 'usersInView' IF USER FALLS INTO VISIBLE RANGE
   console.log(
-    "Users",
+    "Users :",
     Object.values(users),
-    "UserCoord",
+    "UserCoord :",
     positionX,
     positionY,
-    "UserScreen",
+    "UserScreen :",
     screenHeight,
     screenWidth
   );
@@ -55,10 +55,6 @@ export default function listUsersInView(
   const sorted = usersInView.map((topi) => {
     return [distance(topi, positionX, positionY), topi];
   });
-  const result = sorted.sort(sortdistance).map((topi) => {
-    return topi[1];
-  });
-
   // END SOLUTION SECTION
 
   return sorted.sort(sortdistance);

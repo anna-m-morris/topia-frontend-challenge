@@ -12,7 +12,6 @@ export const UserList = (props) => {
   // CTA in Modal should close modal, call listUsersInView with updated values, and update usersInView
   // Add a list of the users in view in the render statement below
   // console.log(props)
-console.log("users", users)
   return (
     <Container maxWidth="md">
       <Box my={4}>
