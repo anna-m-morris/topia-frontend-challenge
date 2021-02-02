@@ -18,7 +18,7 @@ export function Modal(props) {
       <div className="modal">
         <button onClick={handleEscape}>Esc</button>
         <UserList />
-        <Form />
+        <Form size={size}/>
       </div>
     );
   }

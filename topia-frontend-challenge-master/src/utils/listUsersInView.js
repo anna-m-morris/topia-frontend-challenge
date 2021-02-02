@@ -56,6 +56,6 @@ export default function listUsersInView(
     return [distance(topi, positionX, positionY), topi];
   });
   // END SOLUTION SECTION
-
+  console.log(sorted.sort(sortdistance))
   return sorted.sort(sortdistance);
 }
