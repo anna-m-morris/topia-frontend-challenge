@@ -40,6 +40,7 @@ export function Form() {
     );
   };
 
+  //// Doesn't work on first click yet
   // const goToCenter = (event) => {
   //   setSize({ height: 4000, width: 4000 });
   //   setCoordinates({ x: 2000, y: 2000 });
