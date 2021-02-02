@@ -47,7 +47,7 @@ export default function listUsersInView(
 
   //Sort visable users by distance
   const distance = (topi, positionX, positionY) => {
-    return Math.round(Math.sqrt(((topi.x) - positionX)**2 + (topi.y - positionY)**2));
+    return Math.sqrt(((topi.x) - positionX)**2 + (topi.y - positionY)**2);
   };
   const sortdistance = (a, b) => {
     return a[0] - b[0];
