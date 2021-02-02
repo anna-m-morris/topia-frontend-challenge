@@ -15,7 +15,7 @@ export function Modal(props) {
     return null;
   } else {
     return (
-      <div className="modal" style={{ height: size.height, width: size.width }}>
+      <div className="modal">
         <button onClick={handleEscape}>Esc</button>
         <UserList />
         <Form />
